@@ -53,3 +53,13 @@
 ;; they are implemented.
 
 (setq-default cursor-type 'bar)
+(map! "C-z" 'undo)
+
+(defun fixa-text-mode ()
+  (setq spell-fu-faces-exclude '(org-meta-line org-link org-code))
+  (setq ispell-dictionary "sv")
+  (spell-fu-mode -1)
+  (flyspell-mode))
+
+(after! org
+  (add-hook 'org-mode-hook (lambda () (fixa-text-mode))))
